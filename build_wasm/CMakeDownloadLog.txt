@@ -1,0 +1,2 @@
+use_cache "/Users/ragrawal/random/opencv/.cache"
+#match_hash_in_cmake_cache "OCV_DOWNLOAD_DATA_HASH_share_OpenCV_testdata_cv_face_face_landmark_model_dat"
