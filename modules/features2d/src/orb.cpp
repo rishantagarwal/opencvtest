@@ -651,7 +651,7 @@ static inline float getScale(int level, int firstLevel, double scaleFactor)
 }
 
 
-class CV_EXPORTS_W ORB_Impl CV_FINAL : public ORB
+class ORB_Impl CV_FINAL : public ORB
 {
 public:
     explicit ORB_Impl(int _nfeatures, float _scaleFactor, int _nlevels, int _edgeThreshold,
@@ -660,6 +660,7 @@ public:
         edgeThreshold(_edgeThreshold), firstLevel(_firstLevel), wta_k(_WTA_K),
         scoreType(_scoreType), patchSize(_patchSize), fastThreshold(_fastThreshold)
     {}
+
 
     void setMaxFeatures(int maxFeatures) CV_OVERRIDE { nfeatures = maxFeatures; }
     int getMaxFeatures() const CV_OVERRIDE { return nfeatures; }

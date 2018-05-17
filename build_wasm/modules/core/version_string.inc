@@ -1,6 +1,6 @@
 "\n"
 "General configuration for OpenCV 3.4.1-dev =====================================\n"
-"  Version control:               3.4.1-485-gb7a9d966d-dirty\n"
+"  Version control:               8adf6c5-dirty\n"
 "\n"
 "  Extra modules:\n"
 "    Location (extra):            /Users/ragrawal/random/opencv_contrib/modules\n"

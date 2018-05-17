@@ -156,6 +156,12 @@ namespace binding_utils
         return mat.size();
     }
 
+    // rishant
+
+    // cv::ORB ORB_create(){
+    //    return cv::ORB::create()
+    // }
+
     cv::Mat matZeros(int arg0, int arg1, int arg2)
     {
         return cv::Mat::zeros(arg0, arg1, arg2);
@@ -333,6 +339,11 @@ EMSCRIPTEN_BINDINGS(binding_utils)
     register_vector<cv::Point>("PointVector");
     register_vector<cv::Mat>("MatVector");
     register_vector<cv::Rect>("RectVector");
+
+    // emscripten::class_<cv::ORB>("ORB")
+    //     .constructor<>()
+    //     .constructor<int, int, int,int, int, int,int, int, int>()
+    //     .property("ORB_create",&binding_utils::ORB_create)
 
     emscripten::class_<cv::Mat>("Mat")
         .constructor<>()
