@@ -539,11 +539,11 @@ CPACK_INSTALLED_DIRECTORIES=/Users/ragrawal/random/opencv;/
 CPACK_INSTALL_CMAKE_PROJECTS=
 CPACK_INSTALL_PREFIX=/Users/ragrawal/random/opencv/build_wasm/install
 CPACK_MODULE_PATH=/Users/ragrawal/work/emsdk/emscripten/1.37.39/cmake/Modules;/Users/ragrawal/work/emsdk/emscripten/1.37.39/cmake/Modules;/Users/ragrawal/work/emsdk/emscripten/1.37.39/cmake/Modules;/Users/ragrawal/work/emsdk/emscripten/1.37.39/cmake/Modules
-CPACK_NSIS_DISPLAY_NAME=OpenCV 8adf6c5-dirty
+CPACK_NSIS_DISPLAY_NAME=OpenCV e63722d-dirty
 CPACK_NSIS_INSTALLER_ICON_CODE=
 CPACK_NSIS_INSTALLER_MUI_ICON_CODE=
 CPACK_NSIS_INSTALL_ROOT=$PROGRAMFILES
-CPACK_NSIS_PACKAGE_NAME=OpenCV 8adf6c5-dirty
+CPACK_NSIS_PACKAGE_NAME=OpenCV e63722d-dirty
 CPACK_OUTPUT_CONFIG_FILE=/Users/ragrawal/random/opencv/build_wasm/CPackConfig.cmake
 CPACK_PACKAGE_CONTACT=admin@opencv.org
 CPACK_PACKAGE_DEFAULT_LOCATION=/
@@ -554,13 +554,13 @@ machine perception in the commercial products. Being a BSD-licensed product,
 OpenCV makes it easy for businesses to utilize and modify the code.
 CPACK_PACKAGE_DESCRIPTION_FILE=/usr/local/Cellar/cmake/3.11.1/share/cmake/Templates/CPack.GenericDescription.txt
 CPACK_PACKAGE_DESCRIPTION_SUMMARY=Open Computer Vision Library
-CPACK_PACKAGE_FILE_NAME=OpenCV-8adf6c5-dirty-x86
-CPACK_PACKAGE_INSTALL_DIRECTORY=OpenCV 8adf6c5-dirty
-CPACK_PACKAGE_INSTALL_REGISTRY_KEY=OpenCV 8adf6c5-dirty
+CPACK_PACKAGE_FILE_NAME=OpenCV-e63722d-dirty-x86
+CPACK_PACKAGE_INSTALL_DIRECTORY=OpenCV e63722d-dirty
+CPACK_PACKAGE_INSTALL_REGISTRY_KEY=OpenCV e63722d-dirty
 CPACK_PACKAGE_NAME=OpenCV
 CPACK_PACKAGE_RELOCATABLE=true
 CPACK_PACKAGE_VENDOR=OpenCV Foundation
-CPACK_PACKAGE_VERSION=8adf6c5-dirty
+CPACK_PACKAGE_VERSION=e63722d-dirty
 CPACK_PACKAGE_VERSION_MAJOR=3
 CPACK_PACKAGE_VERSION_MINOR=4
 CPACK_PACKAGE_VERSION_PATCH=1
@@ -585,7 +585,7 @@ CPACK_SOURCE_GENERATOR=TBZ2;TGZ;TXZ;TZ
 CPACK_SOURCE_IGNORE_FILES=/CVS/;/\\.svn/;/\\.bzr/;/\\.hg/;/\\.git/;\\.swp\$;\\.#;/#
 CPACK_SOURCE_INSTALLED_DIRECTORIES=/Users/ragrawal/random/opencv;/
 CPACK_SOURCE_OUTPUT_CONFIG_FILE=/Users/ragrawal/random/opencv/build_wasm/CPackSourceConfig.cmake
-CPACK_SOURCE_PACKAGE_FILE_NAME=OpenCV-8adf6c5-dirty-x86
+CPACK_SOURCE_PACKAGE_FILE_NAME=OpenCV-e63722d-dirty-x86
 CPACK_SOURCE_RPM=OFF
 CPACK_SOURCE_TBZ2=ON
 CPACK_SOURCE_TGZ=ON
@@ -2139,7 +2139,7 @@ OPENCV_SUPPRESS_DEPRECATIONS=1
 OPENCV_TEST_DATA_INSTALL_PATH=share/OpenCV/testdata
 OPENCV_TEST_INSTALL_PATH=bin
 OPENCV_TIMESTAMP=2018-05-16T05:47:51Z
-OPENCV_VCSVERSION=8adf6c5-dirty
+OPENCV_VCSVERSION=e63722d-dirty
 OPENCV_VERSION=3.4.1-dev
 OPENCV_VERSION_FILE=/Users/ragrawal/random/opencv/modules/core/include/opencv2/core/version.hpp
 OPENCV_VERSION_MAJOR=3
@@ -2370,11 +2370,11 @@ set(CPACK_INSTALLED_DIRECTORIES "/Users/ragrawal/random/opencv;/")
 set(CPACK_INSTALL_CMAKE_PROJECTS "")
 set(CPACK_INSTALL_PREFIX "/Users/ragrawal/random/opencv/build_wasm/install")
 set(CPACK_MODULE_PATH "/Users/ragrawal/work/emsdk/emscripten/1.37.39/cmake/Modules;/Users/ragrawal/work/emsdk/emscripten/1.37.39/cmake/Modules;/Users/ragrawal/work/emsdk/emscripten/1.37.39/cmake/Modules;/Users/ragrawal/work/emsdk/emscripten/1.37.39/cmake/Modules")
-set(CPACK_NSIS_DISPLAY_NAME "OpenCV 8adf6c5-dirty")
+set(CPACK_NSIS_DISPLAY_NAME "OpenCV e63722d-dirty")
 set(CPACK_NSIS_INSTALLER_ICON_CODE "")
 set(CPACK_NSIS_INSTALLER_MUI_ICON_CODE "")
 set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES")
-set(CPACK_NSIS_PACKAGE_NAME "OpenCV 8adf6c5-dirty")
+set(CPACK_NSIS_PACKAGE_NAME "OpenCV e63722d-dirty")
 set(CPACK_OUTPUT_CONFIG_FILE "/Users/ragrawal/random/opencv/build_wasm/CPackConfig.cmake")
 set(CPACK_PACKAGE_CONTACT "admin@opencv.org")
 set(CPACK_PACKAGE_DEFAULT_LOCATION "/")
@@ -2385,13 +2385,13 @@ machine perception in the commercial products. Being a BSD-licensed product,
 OpenCV makes it easy for businesses to utilize and modify the code.")
 set(CPACK_PACKAGE_DESCRIPTION_FILE "/usr/local/Cellar/cmake/3.11.1/share/cmake/Templates/CPack.GenericDescription.txt")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Open Computer Vision Library")
-set(CPACK_PACKAGE_FILE_NAME "OpenCV-8adf6c5-dirty-x86")
-set(CPACK_PACKAGE_INSTALL_DIRECTORY "OpenCV 8adf6c5-dirty")
-set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "OpenCV 8adf6c5-dirty")
+set(CPACK_PACKAGE_FILE_NAME "OpenCV-e63722d-dirty-x86")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "OpenCV e63722d-dirty")
+set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "OpenCV e63722d-dirty")
 set(CPACK_PACKAGE_NAME "OpenCV")
 set(CPACK_PACKAGE_RELOCATABLE "true")
 set(CPACK_PACKAGE_VENDOR "OpenCV Foundation")
-set(CPACK_PACKAGE_VERSION "8adf6c5-dirty")
+set(CPACK_PACKAGE_VERSION "e63722d-dirty")
 set(CPACK_PACKAGE_VERSION_MAJOR "3")
 set(CPACK_PACKAGE_VERSION_MINOR "4")
 set(CPACK_PACKAGE_VERSION_PATCH "1")
@@ -2416,7 +2416,7 @@ set(CPACK_SOURCE_GENERATOR "TBZ2;TGZ;TXZ;TZ")
 set(CPACK_SOURCE_IGNORE_FILES "/CVS/;/\\.svn/;/\\.bzr/;/\\.hg/;/\\.git/;\\.swp\$;\\.#;/#")
 set(CPACK_SOURCE_INSTALLED_DIRECTORIES "/Users/ragrawal/random/opencv;/")
 set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "/Users/ragrawal/random/opencv/build_wasm/CPackSourceConfig.cmake")
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "OpenCV-8adf6c5-dirty-x86")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "OpenCV-e63722d-dirty-x86")
 set(CPACK_SOURCE_RPM "OFF")
 set(CPACK_SOURCE_TBZ2 "ON")
 set(CPACK_SOURCE_TGZ "ON")

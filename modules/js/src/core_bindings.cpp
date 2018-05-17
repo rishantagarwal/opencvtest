@@ -157,10 +157,25 @@ namespace binding_utils
     }
 
     // rishant
+    cv::ORB_Impl generateOrbDetector(){
+      cv::Ptr<cv::ORB> detector = cv::ORB::create();
+      CV_Assert( ! detector.empty() );
+      return *dynamic_cast<cv::ORB_Impl*>(detector.get());
+    }
 
-    // cv::ORB ORB_create(){
-    //    return cv::ORB::create()
-    // }
+    _OutputArray detectAndCompute( cv::ORB_Impl& instance, InputArray image, InputArray mask,  bool useProvidedKeypoints=false){
+      std::vector<KeyPoint> keypoints;
+      _OutputArray descriptors;
+                      instance.detectAndCompute(image,mask,keypoints,descriptors,useProvidedKeypoints);
+                       return descriptors;
+                     }
+
+
+    static int getRandomVal()
+    {
+        int step = 2;
+        return step;
+    }
 
     cv::Mat matZeros(int arg0, int arg1, int arg2)
     {
@@ -339,11 +354,23 @@ EMSCRIPTEN_BINDINGS(binding_utils)
     register_vector<cv::Point>("PointVector");
     register_vector<cv::Mat>("MatVector");
     register_vector<cv::Rect>("RectVector");
+    // register_vector<cv::ORB::create()>("ORBVector");
 
-    // emscripten::class_<cv::ORB>("ORB")
-    //     .constructor<>()
-    //     .constructor<int, int, int,int, int, int,int, int, int>()
-    //     .property("ORB_create",&binding_utils::ORB_create)
+    emscripten::class_<cv::ORB_Impl>("ORB")
+      .class_function("create",cv::ORB_Impl::create)
+      .class_function("detectAndCompute",&binding_utils::detectAndCompute);
+
+    emscripten::class_<cv::Feature2D>("Feature2D");
+    // emscripten::class_<cv::Ptr<cv::ORB>>("PtrORB");
+        // .class_function("test",&binding_utils::getRandomVal);
+        // .class_function("test2",&binding_utils::ORB_create)
+        // .property("ORB_create",&binding_utils::ORB_create)
+    //
+    //
+    //   // cv::Ptr<cv::ORB> generateOrbDetector
+    function("createOrbClass",&binding_utils::generateOrbDetector);
+    //
+    // function("test", &binding_utils::getRandomVal, allow_raw_pointers());
 
     emscripten::class_<cv::Mat>("Mat")
         .constructor<>()

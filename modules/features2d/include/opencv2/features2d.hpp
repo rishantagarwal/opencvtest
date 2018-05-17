@@ -283,6 +283,9 @@ public:
     CV_WRAP virtual String getDefaultName() const CV_OVERRIDE;
 };
 
+
+
+
 /** @brief Class implementing the ORB (*oriented BRIEF*) keypoint detector and descriptor extractor
 
 described in @cite RRKB11 . The algorithm uses FAST in pyramids to detect stable keypoints, selects
@@ -357,6 +360,120 @@ public:
     CV_WRAP virtual int getFastThreshold() const = 0;
     CV_WRAP virtual String getDefaultName() const CV_OVERRIDE;
 };
+
+
+// rishant
+class CV_EXPORTS_W ORB_Impl : public ORB
+{
+public:
+    CV_WRAP explicit ORB_Impl(int _nfeatures, float _scaleFactor, int _nlevels, int _edgeThreshold,
+             int _firstLevel, int _WTA_K, int _scoreType, int _patchSize, int _fastThreshold) :
+        nfeatures(_nfeatures), scaleFactor(_scaleFactor), nlevels(_nlevels),
+        edgeThreshold(_edgeThreshold), firstLevel(_firstLevel), wta_k(_WTA_K),
+        scoreType(_scoreType), patchSize(_patchSize), fastThreshold(_fastThreshold)
+    {}
+
+
+    CV_WRAP void setMaxFeatures(int maxFeatures) CV_OVERRIDE { nfeatures = maxFeatures; }
+    CV_WRAP int getMaxFeatures() const CV_OVERRIDE { return nfeatures; }
+
+    CV_WRAP void setScaleFactor(double scaleFactor_) CV_OVERRIDE { scaleFactor = scaleFactor_; }
+    CV_WRAP double getScaleFactor() const CV_OVERRIDE { return scaleFactor; }
+
+    CV_WRAP void setNLevels(int nlevels_) CV_OVERRIDE { nlevels = nlevels_; }
+    CV_WRAP int getNLevels() const CV_OVERRIDE { return nlevels; }
+
+    CV_WRAP void setEdgeThreshold(int edgeThreshold_) CV_OVERRIDE { edgeThreshold = edgeThreshold_; }
+    CV_WRAP int getEdgeThreshold() const CV_OVERRIDE { return edgeThreshold; }
+
+    CV_WRAP void setFirstLevel(int firstLevel_) CV_OVERRIDE { CV_Assert(firstLevel_ >= 0);  firstLevel = firstLevel_; }
+    CV_WRAP int getFirstLevel() const CV_OVERRIDE { return firstLevel; }
+
+    CV_WRAP void setWTA_K(int wta_k_) CV_OVERRIDE { wta_k = wta_k_; }
+    CV_WRAP int getWTA_K() const CV_OVERRIDE { return wta_k; }
+
+    CV_WRAP void setScoreType(int scoreType_) CV_OVERRIDE { scoreType = scoreType_; }
+    CV_WRAP int getScoreType() const CV_OVERRIDE { return scoreType; }
+
+    CV_WRAP void setPatchSize(int patchSize_) CV_OVERRIDE { patchSize = patchSize_; }
+    CV_WRAP int getPatchSize() const CV_OVERRIDE { return patchSize; }
+
+    CV_WRAP void setFastThreshold(int fastThreshold_) CV_OVERRIDE { fastThreshold = fastThreshold_; }
+    CV_WRAP int getFastThreshold() const CV_OVERRIDE { return fastThreshold; }
+
+    // returns the descriptor size in bytes
+    CV_WRAP int descriptorSize() const CV_OVERRIDE;
+    // returns the descriptor type
+    CV_WRAP int descriptorType() const CV_OVERRIDE;
+    // returns the default norm type
+    CV_WRAP int defaultNorm() const CV_OVERRIDE;
+
+    // Compute the ORB_Impl features and descriptors on an image
+    CV_WRAP void detectAndCompute( InputArray image, InputArray mask, std::vector<KeyPoint>& keypoints,
+                     OutputArray descriptors, bool useProvidedKeypoints=false ) CV_OVERRIDE;
+
+protected:
+
+    int nfeatures;
+    double scaleFactor;
+    int nlevels;
+    int edgeThreshold;
+    int firstLevel;
+    int wta_k;
+    int scoreType;
+    int patchSize;
+    int fastThreshold;
+};
+
+// class CV_EXPORTS_W ORB_Impl : public Feature2D
+// {
+// public:
+//
+//
+//
+//     CV_WRAP static Ptr<ORB> create(int nfeatures, float scaleFactor, int nlevels, int edgeThreshold,
+//         int firstLevel, int WTA_K, int scoreType, int patchSize, int fastThreshold);
+//
+//     CV_WRAP  void setMaxFeatures(int maxFeatures);
+//     CV_WRAP  int getMaxFeatures() const ;
+//
+//     CV_WRAP  void setScaleFactor(double scaleFactor);
+//     CV_WRAP  double getScaleFactor() const;
+//
+//     CV_WRAP  void setNLevels(int nlevels) ;
+//     CV_WRAP  int getNLevels() const ;
+//
+//     CV_WRAP  void setEdgeThreshold(int edgeThreshold);
+//     CV_WRAP  int getEdgeThreshold() const ;
+//
+//     CV_WRAP  void setFirstLevel(int firstLevel);
+//     CV_WRAP  int getFirstLevel() const ;
+//
+//     CV_WRAP  void setWTA_K(int wta_k) ;
+//     CV_WRAP  int getWTA_K() const ;
+//
+//     CV_WRAP  void setScoreType(int scoreType);
+//     CV_WRAP  int getScoreType() const ;
+//
+//     CV_WRAP  void setPatchSize(int patchSize);
+//     CV_WRAP  int getPatchSize() const ;
+//
+//     CV_WRAP  void setFastThreshold(int fastThreshold) ;
+//     CV_WRAP  int getFastThreshold() const ;
+//     CV_WRAP  String getDefaultName() const CV_OVERRIDE;
+//
+//   protected:
+//
+//       int nfeatures;
+//       double scaleFactor;
+//       int nlevels;
+//       int edgeThreshold;
+//       int firstLevel;
+//       int wta_k;
+//       int scoreType;
+//       int patchSize;
+//       int fastThreshold;
+// };
 
 /** @brief Maximally stable extremal region extractor
 

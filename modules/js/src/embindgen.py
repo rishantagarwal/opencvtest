@@ -128,9 +128,11 @@ video = {'': ['CamShift', 'calcOpticalFlowFarneback', 'calcOpticalFlowPyrLK', 'c
 dnn = {'dnn_Net': ['setInput', 'forward'],
        '': ['readNetFromCaffe', 'readNetFromTensorflow', 'readNetFromTorch', 'readNetFromDarknet', 'blobFromImage']}
 
-features2d = {'ORB':['create','setMaxFeatures','getMaxFeatures','setScaleFactor','getScaleFactor','setNLevels','getNLevels',  \
-                     'setEdgeThreshold','getEdgeThreshold','setFirstLevel','getFirstLevel','setWTA_K','getWTA_K',  \
-                     'setScoreType','getScoreType','setPatchSize','getPatchSize','setFastThreshold','getFastThreshold','getDefaultName']}
+# features2d = {'ORB':['create','setMaxFeatures','getMaxFeatures','setScaleFactor','getScaleFactor','setNLevels','getNLevels',  \
+#                      'setEdgeThreshold','getEdgeThreshold','setFirstLevel','getFirstLevel','setWTA_K','getWTA_K',  \
+#                      'setScoreType','getScoreType','setPatchSize','getPatchSize','setFastThreshold','getFastThreshold','getDefaultName']}
+
+# xfeatures2d = {'':['test']}
 
 def makeWhiteList(module_list):
     wl = {}
@@ -142,7 +144,7 @@ def makeWhiteList(module_list):
                 wl[k] = m[k]
     return wl
 
-white_list = makeWhiteList([core, imgproc, objdetect, video, dnn, features2d])
+white_list = makeWhiteList([core, imgproc, objdetect, video, dnn])
 
 # Features to be exported
 # export_enums = False

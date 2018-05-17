@@ -157,10 +157,25 @@ namespace binding_utils
     }
 
     // rishant
+    cv::ORB_Impl generateOrbDetector(){
+      cv::Ptr<cv::ORB> detector = cv::ORB::create();
+      CV_Assert( ! detector.empty() );
+      return *dynamic_cast<cv::ORB_Impl*>(detector.get());
+    }
 
-    // cv::ORB ORB_create(){
-    //    return cv::ORB::create()
-    // }
+    _OutputArray detectAndCompute( cv::ORB_Impl& instance, InputArray image, InputArray mask,  bool useProvidedKeypoints=false){
+      std::vector<KeyPoint> keypoints;
+      _OutputArray descriptors;
+                      instance.detectAndCompute(image,mask,keypoints,descriptors,useProvidedKeypoints);
+                       return descriptors;
+                     }
+
+
+    static int getRandomVal()
+    {
+        int step = 2;
+        return step;
+    }
 
     cv::Mat matZeros(int arg0, int arg1, int arg2)
     {
@@ -339,11 +354,23 @@ EMSCRIPTEN_BINDINGS(binding_utils)
     register_vector<cv::Point>("PointVector");
     register_vector<cv::Mat>("MatVector");
     register_vector<cv::Rect>("RectVector");
+    // register_vector<cv::ORB::create()>("ORBVector");
 
-    // emscripten::class_<cv::ORB>("ORB")
-    //     .constructor<>()
-    //     .constructor<int, int, int,int, int, int,int, int, int>()
-    //     .property("ORB_create",&binding_utils::ORB_create)
+    emscripten::class_<cv::ORB_Impl>("ORB")
+      .class_function("create",cv::ORB_Impl::create)
+      .class_function("detectAndCompute",&binding_utils::detectAndCompute);
+
+    emscripten::class_<cv::Feature2D>("Feature2D");
+    // emscripten::class_<cv::Ptr<cv::ORB>>("PtrORB");
+        // .class_function("test",&binding_utils::getRandomVal);
+        // .class_function("test2",&binding_utils::ORB_create)
+        // .property("ORB_create",&binding_utils::ORB_create)
+    //
+    //
+    //   // cv::Ptr<cv::ORB> generateOrbDetector
+    function("createOrbClass",&binding_utils::generateOrbDetector);
+    //
+    // function("test", &binding_utils::getRandomVal, allow_raw_pointers());
 
     emscripten::class_<cv::Mat>("Mat")
         .constructor<>()
@@ -2060,86 +2087,6 @@ namespace Wrappers {
         return arg0.detectMultiScale(arg1, arg2);
     }
     
-    std::string ORB_getDefaultName_wrapper(cv::ORB& arg0 ) {
-        return arg0.getDefaultName();
-    }
-    
-    void ORB_setEdgeThreshold_wrapper(cv::ORB& arg0 , int arg1) {
-        return arg0.setEdgeThreshold(arg1);
-    }
-    
-    void ORB_setFirstLevel_wrapper(cv::ORB& arg0 , int arg1) {
-        return arg0.setFirstLevel(arg1);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper(int arg1, float arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
-        return cv::ORB::create(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_1(int arg1, float arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-        return cv::ORB::create(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_2(int arg1, float arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        return cv::ORB::create(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_3(int arg1, float arg2, int arg3, int arg4, int arg5, int arg6) {
-        return cv::ORB::create(arg1, arg2, arg3, arg4, arg5, arg6);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_4(int arg1, float arg2, int arg3, int arg4, int arg5) {
-        return cv::ORB::create(arg1, arg2, arg3, arg4, arg5);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_5(int arg1, float arg2, int arg3, int arg4) {
-        return cv::ORB::create(arg1, arg2, arg3, arg4);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_6(int arg1, float arg2, int arg3) {
-        return cv::ORB::create(arg1, arg2, arg3);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_7(int arg1, float arg2) {
-        return cv::ORB::create(arg1, arg2);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_8(int arg1) {
-        return cv::ORB::create(arg1);
-    }
-    
-    Ptr<ORB> ORB_create_wrapper_9() {
-        return cv::ORB::create();
-    }
-    
-    void ORB_setMaxFeatures_wrapper(cv::ORB& arg0 , int arg1) {
-        return arg0.setMaxFeatures(arg1);
-    }
-    
-    void ORB_setNLevels_wrapper(cv::ORB& arg0 , int arg1) {
-        return arg0.setNLevels(arg1);
-    }
-    
-    void ORB_setFastThreshold_wrapper(cv::ORB& arg0 , int arg1) {
-        return arg0.setFastThreshold(arg1);
-    }
-    
-    void ORB_setPatchSize_wrapper(cv::ORB& arg0 , int arg1) {
-        return arg0.setPatchSize(arg1);
-    }
-    
-    void ORB_setWTA_K_wrapper(cv::ORB& arg0 , int arg1) {
-        return arg0.setWTA_K(arg1);
-    }
-    
-    void ORB_setScaleFactor_wrapper(cv::ORB& arg0 , double arg1) {
-        return arg0.setScaleFactor(arg1);
-    }
-    
-    void ORB_setScoreType_wrapper(cv::ORB& arg0 , int arg1) {
-        return arg0.setScoreType(arg1);
-    }
-    
 }
 
 EMSCRIPTEN_BINDINGS(testBinding) {
@@ -2862,39 +2809,6 @@ EMSCRIPTEN_BINDINGS(testBinding) {
         .function("detectMultiScale", select_overload<void(cv::CascadeClassifier&,const cv::Mat&,std::vector<Rect>&,double,int)>(&Wrappers::CascadeClassifier_detectMultiScale_wrapper_3))
         .function("detectMultiScale", select_overload<void(cv::CascadeClassifier&,const cv::Mat&,std::vector<Rect>&,double)>(&Wrappers::CascadeClassifier_detectMultiScale_wrapper_4))
         .function("detectMultiScale", select_overload<void(cv::CascadeClassifier&,const cv::Mat&,std::vector<Rect>&)>(&Wrappers::CascadeClassifier_detectMultiScale_wrapper_5));
-
-    emscripten::class_<cv::ORB ,base<Feature2D>>("ORB")
-        .function("getDefaultName", select_overload<std::string(cv::ORB&)>(&Wrappers::ORB_getDefaultName_wrapper))
-        .function("getMaxFeatures", select_overload<int()const>(&cv::ORB::getMaxFeatures), pure_virtual())
-        .function("setEdgeThreshold", select_overload<void(cv::ORB&,int)>(&Wrappers::ORB_setEdgeThreshold_wrapper), pure_virtual())
-        .function("setFirstLevel", select_overload<void(cv::ORB&,int)>(&Wrappers::ORB_setFirstLevel_wrapper), pure_virtual())
-        .constructor(select_overload<Ptr<ORB>(int,float,int,int,int,int,int,int,int)>(&Wrappers::ORB_create_wrapper))
-        .constructor(select_overload<Ptr<ORB>(int,float,int,int,int,int,int,int)>(&Wrappers::ORB_create_wrapper_1))
-        .constructor(select_overload<Ptr<ORB>(int,float,int,int,int,int,int)>(&Wrappers::ORB_create_wrapper_2))
-        .constructor(select_overload<Ptr<ORB>(int,float,int,int,int,int)>(&Wrappers::ORB_create_wrapper_3))
-        .constructor(select_overload<Ptr<ORB>(int,float,int,int,int)>(&Wrappers::ORB_create_wrapper_4))
-        .constructor(select_overload<Ptr<ORB>(int,float,int,int)>(&Wrappers::ORB_create_wrapper_5))
-        .constructor(select_overload<Ptr<ORB>(int,float,int)>(&Wrappers::ORB_create_wrapper_6))
-        .constructor(select_overload<Ptr<ORB>(int,float)>(&Wrappers::ORB_create_wrapper_7))
-        .constructor(select_overload<Ptr<ORB>(int)>(&Wrappers::ORB_create_wrapper_8))
-        .constructor(select_overload<Ptr<ORB>()>(&Wrappers::ORB_create_wrapper_9))
-        .function("getFastThreshold", select_overload<int()const>(&cv::ORB::getFastThreshold), pure_virtual())
-        .function("setMaxFeatures", select_overload<void(cv::ORB&,int)>(&Wrappers::ORB_setMaxFeatures_wrapper), pure_virtual())
-        .function("getWTA_K", select_overload<int()const>(&cv::ORB::getWTA_K), pure_virtual())
-        .function("getNLevels", select_overload<int()const>(&cv::ORB::getNLevels), pure_virtual())
-        .function("setNLevels", select_overload<void(cv::ORB&,int)>(&Wrappers::ORB_setNLevels_wrapper), pure_virtual())
-        .function("setFastThreshold", select_overload<void(cv::ORB&,int)>(&Wrappers::ORB_setFastThreshold_wrapper), pure_virtual())
-        .function("getScaleFactor", select_overload<double()const>(&cv::ORB::getScaleFactor), pure_virtual())
-        .function("setPatchSize", select_overload<void(cv::ORB&,int)>(&Wrappers::ORB_setPatchSize_wrapper), pure_virtual())
-        .function("setWTA_K", select_overload<void(cv::ORB&,int)>(&Wrappers::ORB_setWTA_K_wrapper), pure_virtual())
-        .function("setScaleFactor", select_overload<void(cv::ORB&,double)>(&Wrappers::ORB_setScaleFactor_wrapper), pure_virtual())
-        .function("getPatchSize", select_overload<int()const>(&cv::ORB::getPatchSize), pure_virtual())
-        .function("getEdgeThreshold", select_overload<int()const>(&cv::ORB::getEdgeThreshold), pure_virtual())
-        .function("getFirstLevel", select_overload<int()const>(&cv::ORB::getFirstLevel), pure_virtual())
-        .function("getScoreType", select_overload<int()const>(&cv::ORB::getScoreType), pure_virtual())
-        .function("setScoreType", select_overload<void(cv::ORB&,int)>(&Wrappers::ORB_setScoreType_wrapper), pure_virtual())
-        .smart_ptr<Ptr<cv::ORB>>("Ptr<ORB>")
-;
 
     constant("ACCESS_FAST", +cv::ACCESS_FAST);
 
